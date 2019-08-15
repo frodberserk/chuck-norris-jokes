@@ -5,9 +5,14 @@ This application uses a public API "http://www.icndb.com/" to fetch Chuck Norris
 
 Technologies used:
 
-Kotlin
-Anko
-Cicerone
-Fuel
-VIPER Architecture
-SOLID Principle
+- Kotlin
+
+- Anko
+
+- Cicerone
+
+- Fuel
+
+- VIPER Architecture
+
+- SOLID Principle
