@@ -5,7 +5,6 @@ import com.frodberserk.chucknorrisjokes.entity.Joke
 interface DetailContract {
     interface View {
         fun showJokeData(id: String, joke: String)
-        fun showInfoMessage(msg: String)
     }
 
     interface Presenter {

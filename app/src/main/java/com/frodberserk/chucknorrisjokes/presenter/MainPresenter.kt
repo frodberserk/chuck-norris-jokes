@@ -1,15 +1,19 @@
 package com.frodberserk.chucknorrisjokes.presenter
 
+import com.frodberserk.chucknorrisjokes.BaseApplication
 import com.frodberserk.chucknorrisjokes.MainContract
 import com.frodberserk.chucknorrisjokes.entity.Joke
 import com.frodberserk.chucknorrisjokes.interactor.MainInteractor
+import com.frodberserk.chucknorrisjokes.view.activities.DetailActivity
 import com.github.kittinunf.result.Result
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import ru.terrakok.cicerone.Router
 
 class MainPresenter(var view: MainContract.View?) : MainContract.Presenter, MainContract.InteractorOutput {
 
-    var interactor: MainContract.Interactor? = MainInteractor()
+    private var interactor: MainContract.Interactor? = MainInteractor()
+    private val router: Router? by lazy { BaseApplication.INSTANCE.cicerone.router }
 
     override fun onQuerySuccess(data: List<Joke>) {
         view?.hideLoading()
@@ -22,7 +26,8 @@ class MainPresenter(var view: MainContract.View?) : MainContract.Presenter, Main
     }
 
     override fun listItemClicked(joke: Joke?) {
-        view?.showInfoMessage(joke?.component2() ?: "")
+//        view?.showInfoMessage(joke?.component2() ?: "")
+        router?.navigateTo(DetailActivity.TAG, joke)
     }
 
     override fun onViewCreated() {
